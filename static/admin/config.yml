@@ -3,7 +3,7 @@ backend:
   name: github
   repo: drai-inn/drai-docs
   branch: main
-  auth_type: pkce # Use modern, secure, serverless authentication
+  auth_type: pat # Use modern, secure, serverless authentication
 
 # This section controls the media library.
 # By setting these top-level folders, we enable per-folder media libraries.

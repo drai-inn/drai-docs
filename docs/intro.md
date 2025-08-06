@@ -1,4 +1,6 @@
 ---
+slug: tutorial-intro
+title: Tutorial Introduction
 sidebar_position: 1
 ---
 
