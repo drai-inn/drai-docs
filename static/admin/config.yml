@@ -1,0 +1,31 @@
+# This is the backend configuration for the GitHub repository
+backend:
+  name: github
+  repo: drai-inn/drai-docs # e.g., "jane-doe/my-awesome-docs"
+  branch: main # The branch to update
+
+# This is where your uploaded media will be stored
+media_folder: "static/img" # The path to the folder where media files are stored
+public_folder: "/img" # The path to the folder where media files will be accessed
+
+# These are the "collections" of content that Decap CMS will manage.
+collections:
+  - name: "docs" # Used in routes, e.g., /admin/#/collections/docs
+    label: "Documentation" # Used in the UI
+    folder: "docs" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    fields: # The fields for each document, used as a template
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Blog post file format
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
