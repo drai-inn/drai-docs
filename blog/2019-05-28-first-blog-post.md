@@ -1,11 +1,14 @@
 ---
 slug: first-blog-post
-title: First Blog Post
-authors: [slorber, yangshun]
-tags: [hola, docusaurus]
+title: DRAI docs first edit
+authors:
+  - slorber
+  - yangshun
+author: Nick Jones
+tags:
+  - drai
 ---
-
-Lorem ipsum dolor sit amet...
+Hola Drai Inners
 
 <!-- truncate -->
 
