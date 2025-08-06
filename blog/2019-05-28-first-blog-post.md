@@ -3,8 +3,7 @@ slug: first-blog-post
 title: DRAI docs first edit
 authors:
   - slorber
-  - yangshun
-author: Nick Jones
+  - ndjones
 tags:
   - drai
 ---

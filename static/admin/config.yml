@@ -27,6 +27,6 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Blog post file format
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Authors", name: "authors", widget: "string", required: false }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

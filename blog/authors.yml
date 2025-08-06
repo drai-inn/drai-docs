@@ -23,3 +23,15 @@ slorber:
     linkedin: sebastienlorber
     github: slorber
     newsletter: https://thisweekinreact.com
+
+ndjones:
+  name: Nick Jones
+  title: DRAI Director
+  url: https://profiles.auckland.ac.nz/n-jones
+  image_url: https://profiles.auckland.ac.nz/n-jones/thumbnail
+  page:
+    # customize the url of the author page at /blog/authors/<permalink>
+    permalink: '/all-nick-jones-articles'
+  socials:
+    linkedin: nickdjones
+    github: ndjones
