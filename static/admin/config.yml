@@ -1,6 +1,6 @@
 # This is the backend configuration for the GitHub repository
 backend:
-  name: github
+  name: git-gateway
   repo: drai-inn/drai-docs
   branch: main
   auth_type: pkce # Use modern, secure, serverless authentication
@@ -24,7 +24,9 @@ collections:
     folder: 'blog'
     create: true
     # Modernizations to find all posts:
-    extension: [md, mdx] # Look for both .md and .mdx files
+    extension: mdx
+    format: frontmatter
+    # extension: [md, mdx] # Look for both .md and .mdx files
     nested:
       depth: 2 # Look inside subfolders (e.g., blog/my-post/index.mdx)
     # This setting enables per-post media folders
@@ -42,7 +44,9 @@ collections:
     label: 'Documentation'
     folder: 'docs'
     create: true
-    extension: [md, mdx] # Also allow .mdx for docs
+    extension: mdx
+    format: frontmatter
+    # extension: [md, mdx] # Also allow .mdx for docs
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false }
@@ -53,6 +57,8 @@ collections:
     # This is a "files" collection, for managing individual, standalone pages.
     # NOTE: This CANNOT edit React components like the homepage (src/pages/index.js).
     # It can only edit Markdown files.
+    extension: mdx
+    format: frontmatter
     files:
       - label: 'About Page'
         name: 'about'
