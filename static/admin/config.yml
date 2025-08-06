@@ -3,6 +3,7 @@ backend:
   name: github
   repo: drai-inn/drai-docs # e.g., "jane-doe/my-awesome-docs"
   branch: main # The branch to update
+  auth_type: pkce # Use PKCE for authentication
 
 # This is where your uploaded media will be stored
 media_folder: "static/img" # The path to the folder where media files are stored
