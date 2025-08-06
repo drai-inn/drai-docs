@@ -1,11 +1,11 @@
 ---
-slug: first-blog-post
-title: DRAI docs first edit
+title: DRAI docs first edits
 authors:
   - slorber
   - ndjones
 tags:
   - drai
+slug: first-blog-post
 ---
 Hola Drai Inners
 
