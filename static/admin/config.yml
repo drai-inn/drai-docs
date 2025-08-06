@@ -1,32 +1,62 @@
 # This is the backend configuration for the GitHub repository
 backend:
   name: github
-  repo: drai-inn/drai-docs # e.g., "jane-doe/my-awesome-docs"
-  branch: main # The branch to update
-  auth_type: pkce # Use PKCE for authentication
+  repo: drai-inn/drai-docs
+  branch: main
+  auth_type: pkce # Use modern, secure, serverless authentication
 
-# This is where your uploaded media will be stored
-media_folder: "static/img" # The path to the folder where media files are stored
-public_folder: "/img" # The path to the folder where media files will be accessed
+# This section controls the media library.
+# By setting these top-level folders, we enable per-folder media libraries.
+media_folder: 'static/img' # Default location for uploads not in a collection folder
+public_folder: '/img'
+
+# This section controls the editor UI
+editor:
+  preview: false # Disable the often-inaccurate live preview for a cleaner UI
+
+# This enables a link to view the live page, a better preview method.
+show_preview_links: true
 
 # These are the "collections" of content that Decap CMS will manage.
 collections:
-  - name: "docs" # Used in routes, e.g., /admin/#/collections/docs
-    label: "Documentation" # Used in the UI
-    folder: "docs" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template
-    fields: # The fields for each document, used as a template
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "blog"
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'blog'
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Blog post file format
+    # Modernizations to find all posts:
+    extension: [md, mdx] # Look for both .md and .mdx files
+    nested:
+      depth: 2 # Look inside subfolders (e.g., blog/my-post/index.mdx)
+    # This setting enables per-post media folders
+    media_folder: '' # Store images relative to the entry
+    public_folder: '' # The public path will also be relative
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Authors", name: "authors", widget: "string", required: false }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Authors', name: 'authors', widget: 'list' }
+      - { label: 'Tags', name: 'tags', widget: 'list', required: false }
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'docs'
+    label: 'Documentation'
+    folder: 'docs'
+    create: true
+    extension: [md, mdx] # Also allow .mdx for docs
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'pages'
+    label: 'Pages'
+    # This is a "files" collection, for managing individual, standalone pages.
+    # NOTE: This CANNOT edit React components like the homepage (src/pages/index.js).
+    # It can only edit Markdown files.
+    files:
+      - label: 'About Page'
+        name: 'about'
+        file: 'src/pages/about.md' # Example: create this file to see it appear
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
